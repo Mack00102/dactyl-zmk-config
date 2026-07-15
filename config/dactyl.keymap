@@ -14,7 +14,7 @@
                 &kp ESC &kp Q &kp W &kp E &kp R &kp T   &kp Y &kp U &kp I &kp O &kp P &kp EQUAL
                 &kp TAB &kp A &kp S &kp D &kp F &kp G   &kp H &kp J &kp K &kp L &kp SEMI &kp SQT
                 &kp LSHFT &kp Z &kp X &kp C &kp V &kp B   &kp N &kp M &kp COMMA &kp DOT &none &kp FSLH
-                &none &none &kp PG_DN &kp HOME &none &kp DEL   &none &none &none &none &none &none
+                &none &none &kp PG_UP &kp HOME &none &kp DEL   &none &none &none &none &none &none
                                 &kp PG_DN &kp END &kp BSPC &mo 1    &kp RET &kp SPACE &none &none
                                                    &none &kp LCTRL   &none &none
                                                    &none &kp LALT   &none &kp RGUI
@@ -24,7 +24,7 @@
         settings_layer {
             // Left Half                                       // Right Half
             bindings = <
-                &bt BT_CLR &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4   &kp C_MUTE &kp C_VOL_DN &kp C_VOL_UP &kp C_PREV &kp C_PLAY_PAUSE &kp C_NEXT
+                &bt BT_CLR &bt BT_SEL &bt BT_SEL &bt BT_SEL &bt BT_SEL &bt BT_SEL   &kp C_MUTE &kp C_VOL_DN &kp C_VOL_UP &kp C_PREV &kp C_PLAY_PAUSE &kp C_NEXT
                 &out OUT_USB &out OUT_BLE &none &none &none &none   &none &none &none &none &none &none
                 &none &none &none &none &none &none   &none &none &none &none &none &none
                 &none &none &none &none &none &none   &none &none &none &none &none &none
