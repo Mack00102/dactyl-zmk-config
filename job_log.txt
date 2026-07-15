@@ -1,0 +1,387 @@
+﻿2026-07-14T04:41:14.0371897Z Current runner version: '2.335.1'
+2026-07-14T04:41:14.0409049Z ##[group]Runner Image Provisioner
+2026-07-14T04:41:14.0410634Z Hosted Compute Agent
+2026-07-14T04:41:14.0411613Z Version: 20260624.560
+2026-07-14T04:41:14.0412667Z Commit: 925d229a51159bc391ae97e54a2dd1fe20af789d
+2026-07-14T04:41:14.0413906Z Build Date: 2026-06-24T18:26:47Z
+2026-07-14T04:41:14.0415052Z Worker ID: {47a7be95-fd4f-4c73-9342-74ecd1c1acfa}
+2026-07-14T04:41:14.0416253Z Azure Region: eastus
+2026-07-14T04:41:14.0417120Z ##[endgroup]
+2026-07-14T04:41:14.0420174Z ##[group]Operating System
+2026-07-14T04:41:14.0421259Z Ubuntu
+2026-07-14T04:41:14.0422125Z 24.04.4
+2026-07-14T04:41:14.0423019Z LTS
+2026-07-14T04:41:14.0423810Z ##[endgroup]
+2026-07-14T04:41:14.0424761Z ##[group]Runner Image
+2026-07-14T04:41:14.0425752Z Image: ubuntu-24.04
+2026-07-14T04:41:14.0426766Z Version: 20260705.232.1
+2026-07-14T04:41:14.0428767Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20260705.232/images/ubuntu/Ubuntu2404-Readme.md
+2026-07-14T04:41:14.0431740Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20260705.232
+2026-07-14T04:41:14.0433414Z ##[endgroup]
+2026-07-14T04:41:14.0435384Z ##[group]GITHUB_TOKEN Permissions
+2026-07-14T04:41:14.0438305Z Contents: read
+2026-07-14T04:41:14.0439356Z Metadata: read
+2026-07-14T04:41:14.0440618Z Packages: read
+2026-07-14T04:41:14.0441471Z ##[endgroup]
+2026-07-14T04:41:14.0444632Z Secret source: Actions
+2026-07-14T04:41:14.0446180Z Prepare workflow directory
+2026-07-14T04:41:14.1045058Z Prepare all required actions
+2026-07-14T04:41:14.1100422Z Getting action download info
+2026-07-14T04:41:14.2882490Z Download action repository 'actions/checkout@v7' (SHA:9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0)
+2026-07-14T04:41:14.3629963Z Download action repository 'actions/cache@v5' (SHA:caa296126883cff596d87d8935842f9db880ef25)
+2026-07-14T04:41:14.5810898Z Download action repository 'actions/upload-artifact@v7' (SHA:043fb46d1a93c77aae656e7c1c64a875d1fc6a0a)
+2026-07-14T04:41:14.7851011Z Uses: zmkfirmware/zmk/.github/workflows/build-user-config.yml@refs/heads/main (904c9aec8822d79149d42c8a9a77e8828eb08f5a)
+2026-07-14T04:41:14.7855782Z ##[group] Inputs
+2026-07-14T04:41:14.7856329Z   build_matrix_path: build.yaml
+2026-07-14T04:41:14.7856866Z   config_path: config
+2026-07-14T04:41:14.7857336Z   fallback_binary: bin
+2026-07-14T04:41:14.7857811Z   archive_name: firmware
+2026-07-14T04:41:14.7858288Z ##[endgroup]
+2026-07-14T04:41:14.7859155Z Complete job name: build / Build (nice_nano_v2, dactyl_right)
+2026-07-14T04:41:14.8412299Z ##[group]Checking docker version
+2026-07-14T04:41:14.8425823Z ##[command]/usr/bin/docker version --format '{{.Server.APIVersion}}'
+2026-07-14T04:41:14.9424710Z '1.48'
+2026-07-14T04:41:14.9441330Z Docker daemon API version: '1.48'
+2026-07-14T04:41:14.9442100Z ##[command]/usr/bin/docker version --format '{{.Client.APIVersion}}'
+2026-07-14T04:41:14.9593413Z '1.48'
+2026-07-14T04:41:14.9605789Z Docker client API version: '1.48'
+2026-07-14T04:41:14.9611368Z ##[endgroup]
+2026-07-14T04:41:14.9614852Z ##[group]Clean up resources from previous jobs
+2026-07-14T04:41:14.9620428Z ##[command]/usr/bin/docker ps --all --quiet --no-trunc --filter "label=662052"
+2026-07-14T04:41:14.9756260Z ##[command]/usr/bin/docker network prune --force --filter "label=662052"
+2026-07-14T04:41:14.9878484Z ##[endgroup]
+2026-07-14T04:41:14.9879006Z ##[group]Create local container network
+2026-07-14T04:41:14.9889466Z ##[command]/usr/bin/docker network create --label 662052 github_network_e47feadc1cd3478980c7d0f5cba5a1fe
+2026-07-14T04:41:15.0419827Z d1c418d28253546e0e42e26d4fbd9b4cf2d73dd93a25d7e020f864d7d82498a8
+2026-07-14T04:41:15.0444298Z ##[endgroup]
+2026-07-14T04:41:15.0478254Z ##[group]Starting job container
+2026-07-14T04:41:15.0509896Z ##[command]/usr/bin/docker pull zmkfirmware/zmk-build-arm:stable
+2026-07-14T04:41:15.3055439Z stable: Pulling from zmkfirmware/zmk-build-arm
+2026-07-14T04:41:15.3824906Z a1a21c96bc16: Pulling fs layer
+2026-07-14T04:41:15.3825938Z 80b3f0d914b4: Pulling fs layer
+2026-07-14T04:41:15.3827683Z 39f6267735b8: Pulling fs layer
+2026-07-14T04:41:15.5196372Z a1a21c96bc16: Verifying Checksum
+2026-07-14T04:41:15.5198160Z a1a21c96bc16: Download complete
+2026-07-14T04:41:16.4051409Z 80b3f0d914b4: Verifying Checksum
+2026-07-14T04:41:16.4052035Z 80b3f0d914b4: Download complete
+2026-07-14T04:41:16.7725998Z 39f6267735b8: Verifying Checksum
+2026-07-14T04:41:16.7726692Z 39f6267735b8: Download complete
+2026-07-14T04:41:16.9193441Z a1a21c96bc16: Pull complete
+2026-07-14T04:41:25.5649325Z 80b3f0d914b4: Pull complete
+2026-07-14T04:41:35.9681920Z 39f6267735b8: Pull complete
+2026-07-14T04:41:35.9737895Z Digest: sha256:edb1c953438c6f720ddb79c3762f3972013b7fbbaf4fff3592fc869983e7afc5
+2026-07-14T04:41:35.9758793Z Status: Downloaded newer image for zmkfirmware/zmk-build-arm:stable
+2026-07-14T04:41:35.9770027Z docker.io/zmkfirmware/zmk-build-arm:stable
+2026-07-14T04:41:35.9855210Z ##[command]/usr/bin/docker create --name 432d792c8a0f4cdab96ecd626a082d0e_zmkfirmwarezmkbuildarmstable_45b775 --label 662052 --workdir /__w/dactyl-zmk-config/dactyl-zmk-config --network github_network_e47feadc1cd3478980c7d0f5cba5a1fe  -e "HOME=/github/home" -e GITHUB_ACTIONS=true -e CI=true -v "/var/run/docker.sock":"/var/run/docker.sock" -v "/home/runner/work":"/__w" -v "/home/runner/actions-runner/cached/2.335.1/externals":"/__e":ro -v "/home/runner/work/_temp":"/__w/_temp" -v "/home/runner/work/_actions":"/__w/_actions" -v "/opt/hostedtoolcache":"/__t" -v "/home/runner/work/_temp/_github_home":"/github/home" -v "/home/runner/work/_temp/_github_workflow":"/github/workflow" --entrypoint "tail" zmkfirmware/zmk-build-arm:stable "-f" "/dev/null"
+2026-07-14T04:41:36.0160939Z 7621f9c71cb825341cad99ac6ea57d86e9c239d0c81198a6015c971f8e650790
+2026-07-14T04:41:36.0185506Z ##[command]/usr/bin/docker start 7621f9c71cb825341cad99ac6ea57d86e9c239d0c81198a6015c971f8e650790
+2026-07-14T04:41:36.1987417Z 7621f9c71cb825341cad99ac6ea57d86e9c239d0c81198a6015c971f8e650790
+2026-07-14T04:41:36.2007998Z ##[command]/usr/bin/docker ps --all --filter id=7621f9c71cb825341cad99ac6ea57d86e9c239d0c81198a6015c971f8e650790 --filter status=running --no-trunc --format "{{.ID}} {{.Status}}"
+2026-07-14T04:41:36.2127577Z 7621f9c71cb825341cad99ac6ea57d86e9c239d0c81198a6015c971f8e650790 Up Less than a second
+2026-07-14T04:41:36.2148467Z ##[command]/usr/bin/docker inspect --format "{{range .Config.Env}}{{println .}}{{end}}" 7621f9c71cb825341cad99ac6ea57d86e9c239d0c81198a6015c971f8e650790
+2026-07-14T04:41:36.2264271Z HOME=/github/home
+2026-07-14T04:41:36.2264814Z GITHUB_ACTIONS=true
+2026-07-14T04:41:36.2265934Z CI=true
+2026-07-14T04:41:36.2266548Z PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+2026-07-14T04:41:36.2267237Z DEBIAN_FRONTEND=noninteractive
+2026-07-14T04:41:36.2267710Z ZEPHYR_VERSION=4.1.0
+2026-07-14T04:41:36.2288389Z ##[endgroup]
+2026-07-14T04:41:36.2297351Z ##[group]Waiting for all services to be ready
+2026-07-14T04:41:36.2299204Z ##[endgroup]
+2026-07-14T04:41:36.2675717Z ##[group]Run actions/checkout@v7
+2026-07-14T04:41:36.2676442Z with:
+2026-07-14T04:41:36.2676805Z   repository: DuncanPeterM/dactyl-zmk-config
+2026-07-14T04:41:36.2679675Z   token: ***
+2026-07-14T04:41:36.2679941Z   ssh-strict: true
+2026-07-14T04:41:36.2680195Z   ssh-user: git
+2026-07-14T04:41:36.2680785Z   persist-credentials: true
+2026-07-14T04:41:36.2681088Z   clean: true
+2026-07-14T04:41:36.2681348Z   sparse-checkout-cone-mode: true
+2026-07-14T04:41:36.2681649Z   fetch-depth: 1
+2026-07-14T04:41:36.2681890Z   fetch-tags: false
+2026-07-14T04:41:36.2682135Z   show-progress: true
+2026-07-14T04:41:36.2682388Z   lfs: false
+2026-07-14T04:41:36.2682618Z   submodules: false
+2026-07-14T04:41:36.2682872Z   set-safe-directory: true
+2026-07-14T04:41:36.2683160Z   allow-unsafe-pr-checkout: false
+2026-07-14T04:41:36.2683741Z ##[endgroup]
+2026-07-14T04:41:36.2750052Z ##[command]/usr/bin/docker exec  7621f9c71cb825341cad99ac6ea57d86e9c239d0c81198a6015c971f8e650790 sh -c "cat /etc/*release | grep ^ID"
+2026-07-14T04:41:36.4709956Z Syncing repository: DuncanPeterM/dactyl-zmk-config
+2026-07-14T04:41:36.4713093Z ##[group]Getting Git version info
+2026-07-14T04:41:36.4713905Z Working directory is '/__w/dactyl-zmk-config/dactyl-zmk-config'
+2026-07-14T04:41:36.4714732Z [command]/usr/bin/git version
+2026-07-14T04:41:36.4715266Z git version 2.43.0
+2026-07-14T04:41:36.4717031Z ##[endgroup]
+2026-07-14T04:41:36.4723889Z Temporarily overriding HOME='/__w/_temp/3eed2eb3-9ebe-4734-9cf8-726669913d12' before making global git config changes
+2026-07-14T04:41:36.4725229Z Adding repository directory to the temporary git global config as a safe directory
+2026-07-14T04:41:36.4730331Z [command]/usr/bin/git config --global --add safe.directory /__w/dactyl-zmk-config/dactyl-zmk-config
+2026-07-14T04:41:36.4761259Z Deleting the contents of '/__w/dactyl-zmk-config/dactyl-zmk-config'
+2026-07-14T04:41:36.4765055Z ##[group]Determining repository object format
+2026-07-14T04:41:36.4766681Z ##[endgroup]
+2026-07-14T04:41:36.4767408Z ##[group]Initializing the repository
+2026-07-14T04:41:36.4771675Z [command]/usr/bin/git init /__w/dactyl-zmk-config/dactyl-zmk-config
+2026-07-14T04:41:36.4809885Z hint: Using 'master' as the name for the initial branch. This default branch name
+2026-07-14T04:41:36.4811192Z hint: is subject to change. To configure the initial branch name to use in all
+2026-07-14T04:41:36.4811914Z hint: of your new repositories, which will suppress this warning, call:
+2026-07-14T04:41:36.4812406Z hint: 
+2026-07-14T04:41:36.4812975Z hint: 	git config --global init.defaultBranch <name>
+2026-07-14T04:41:36.4813625Z hint: 
+2026-07-14T04:41:36.4814223Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2026-07-14T04:41:36.4814810Z hint: 'development'. The just-created branch can be renamed via this command:
+2026-07-14T04:41:36.4815263Z hint: 
+2026-07-14T04:41:36.4815508Z hint: 	git branch -m <name>
+2026-07-14T04:41:36.4821006Z Initialized empty Git repository in /__w/dactyl-zmk-config/dactyl-zmk-config/.git/
+2026-07-14T04:41:36.4832852Z [command]/usr/bin/git remote add origin https://github.com/DuncanPeterM/dactyl-zmk-config
+2026-07-14T04:41:36.4901075Z ##[endgroup]
+2026-07-14T04:41:36.4902114Z ##[group]Disabling automatic garbage collection
+2026-07-14T04:41:36.4904154Z [command]/usr/bin/git config --local gc.auto 0
+2026-07-14T04:41:36.4932721Z ##[endgroup]
+2026-07-14T04:41:36.4933522Z ##[group]Setting up auth
+2026-07-14T04:41:36.4933905Z Removing SSH command configuration
+2026-07-14T04:41:36.4939274Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-07-14T04:41:36.4968785Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-07-14T04:41:36.5190737Z Removing HTTP extra header
+2026-07-14T04:41:36.5195708Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-07-14T04:41:36.5225020Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-07-14T04:41:36.5438816Z Removing includeIf entries pointing to credentials config files
+2026-07-14T04:41:36.5444216Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-07-14T04:41:36.5476368Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-07-14T04:41:36.5698154Z [command]/usr/bin/git config --file /__w/_temp/git-credentials-77842a24-5e5b-414e-b926-10798e6b9017.config http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2026-07-14T04:41:36.5735822Z [command]/usr/bin/git config --local includeIf.gitdir:/__w/dactyl-zmk-config/dactyl-zmk-config/.git.path /__w/_temp/git-credentials-77842a24-5e5b-414e-b926-10798e6b9017.config
+2026-07-14T04:41:36.5764408Z [command]/usr/bin/git config --local includeIf.gitdir:/__w/dactyl-zmk-config/dactyl-zmk-config/.git/worktrees/*.path /__w/_temp/git-credentials-77842a24-5e5b-414e-b926-10798e6b9017.config
+2026-07-14T04:41:36.5792402Z [command]/usr/bin/git config --local includeIf.gitdir:/github/workspace/.git.path /github/runner_temp/git-credentials-77842a24-5e5b-414e-b926-10798e6b9017.config
+2026-07-14T04:41:36.5819828Z [command]/usr/bin/git config --local includeIf.gitdir:/github/workspace/.git/worktrees/*.path /github/runner_temp/git-credentials-77842a24-5e5b-414e-b926-10798e6b9017.config
+2026-07-14T04:41:36.5845295Z ##[endgroup]
+2026-07-14T04:41:36.5845772Z ##[group]Fetching the repository
+2026-07-14T04:41:36.5853073Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +885014598643f55fad304c7a8252725c657c24c8:refs/remotes/origin/main
+2026-07-14T04:41:36.7524505Z From https://github.com/DuncanPeterM/dactyl-zmk-config
+2026-07-14T04:41:36.7525573Z  * [new ref]         885014598643f55fad304c7a8252725c657c24c8 -> origin/main
+2026-07-14T04:41:36.7547911Z [command]/usr/bin/git branch --list --remote origin/main
+2026-07-14T04:41:36.7570979Z   origin/main
+2026-07-14T04:41:36.7578640Z [command]/usr/bin/git rev-parse refs/remotes/origin/main
+2026-07-14T04:41:36.7599937Z 885014598643f55fad304c7a8252725c657c24c8
+2026-07-14T04:41:36.7604455Z ##[endgroup]
+2026-07-14T04:41:36.7605187Z ##[group]Determining the checkout info
+2026-07-14T04:41:36.7607441Z ##[endgroup]
+2026-07-14T04:41:36.7610957Z [command]/usr/bin/git sparse-checkout disable
+2026-07-14T04:41:36.7646021Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+2026-07-14T04:41:36.7674027Z ##[group]Checking out the ref
+2026-07-14T04:41:36.7676968Z [command]/usr/bin/git checkout --progress --force -B main refs/remotes/origin/main
+2026-07-14T04:41:36.7729016Z Switched to a new branch 'main'
+2026-07-14T04:41:36.7730372Z branch 'main' set up to track 'origin/main'.
+2026-07-14T04:41:36.7735077Z ##[endgroup]
+2026-07-14T04:41:36.7771003Z [command]/usr/bin/git log -1 --format=%H
+2026-07-14T04:41:36.7795086Z 885014598643f55fad304c7a8252725c657c24c8
+2026-07-14T04:41:36.8004172Z ##[group]Run echo "build_dir=$(mktemp -d)" >> $GITHUB_ENV
+2026-07-14T04:41:36.8004754Z [36;1mecho "build_dir=$(mktemp -d)" >> $GITHUB_ENV[0m
+2026-07-14T04:41:36.8008315Z shell: sh -e {0}
+2026-07-14T04:41:36.8008612Z ##[endgroup]
+2026-07-14T04:41:36.8626701Z ##[group]Run if [ -e zephyr/module.yml ]; then
+2026-07-14T04:41:36.8627164Z [36;1mif [ -e zephyr/module.yml ]; then[0m
+2026-07-14T04:41:36.8627637Z [36;1m  export zmk_load_arg=" -DZMK_EXTRA_MODULES='${GITHUB_WORKSPACE}'"[0m
+2026-07-14T04:41:36.8628103Z [36;1m  new_tmp_dir="${TMPDIR:-/tmp}/zmk-config"[0m
+2026-07-14T04:41:36.8628459Z [36;1m  mkdir -p "${new_tmp_dir}"[0m
+2026-07-14T04:41:36.8628810Z [36;1m  echo "base_dir=${new_tmp_dir}" >> $GITHUB_ENV[0m
+2026-07-14T04:41:36.8629151Z [36;1melse[0m
+2026-07-14T04:41:36.8629449Z [36;1m  echo "base_dir=${GITHUB_WORKSPACE}" >> $GITHUB_ENV[0m
+2026-07-14T04:41:36.8630082Z [36;1mfi[0m
+2026-07-14T04:41:36.8630317Z [36;1m[0m
+2026-07-14T04:41:36.8630550Z [36;1mif [ -n "${snippet}" ]; then[0m
+2026-07-14T04:41:36.8630917Z [36;1m  extra_west_args="-S \"${snippet}\""[0m
+2026-07-14T04:41:36.8631243Z [36;1mfi[0m
+2026-07-14T04:41:36.8631460Z [36;1m[0m
+2026-07-14T04:41:36.8631791Z [36;1mecho "zephyr_version=${ZEPHYR_VERSION}" >> $GITHUB_ENV[0m
+2026-07-14T04:41:36.8632242Z [36;1mecho "extra_west_args=${extra_west_args}" >> $GITHUB_ENV[0m
+2026-07-14T04:41:36.8632783Z [36;1mecho "extra_cmake_args=${shield:+-DSHIELD=\"$shield\"}${zmk_load_arg}" >> $GITHUB_ENV[0m
+2026-07-14T04:41:36.8633366Z [36;1mecho "display_name=${shield:+$shield - }${board}" >> $GITHUB_ENV[0m
+2026-07-14T04:41:36.8633951Z [36;1mecho "artifact_name=${artifact_name:-${shield:+$shield-}${board//\//_}-zmk}" >> $GITHUB_ENV[0m
+2026-07-14T04:41:36.8635686Z shell: bash -x {0}
+2026-07-14T04:41:36.8635965Z env:
+2026-07-14T04:41:36.8636209Z   build_dir: /tmp/tmp.BqujMV9ThT
+2026-07-14T04:41:36.8636515Z   board: nice_nano_v2
+2026-07-14T04:41:36.8636772Z   shield: dactyl_right
+2026-07-14T04:41:36.8637247Z   artifact_name: 
+2026-07-14T04:41:36.8637485Z   snippet: 
+2026-07-14T04:41:36.8637712Z ##[endgroup]
+2026-07-14T04:41:36.9180029Z + '[' -e zephyr/module.yml ']'
+2026-07-14T04:41:36.9181963Z + export 'zmk_load_arg= -DZMK_EXTRA_MODULES='\''/__w/dactyl-zmk-config/dactyl-zmk-config'\'''
+2026-07-14T04:41:36.9183492Z + zmk_load_arg=' -DZMK_EXTRA_MODULES='\''/__w/dactyl-zmk-config/dactyl-zmk-config'\'''
+2026-07-14T04:41:36.9184738Z + new_tmp_dir=/tmp/zmk-config
+2026-07-14T04:41:36.9185982Z + mkdir -p /tmp/zmk-config
+2026-07-14T04:41:36.9191775Z + echo base_dir=/tmp/zmk-config
+2026-07-14T04:41:36.9192638Z + '[' -n '' ']'
+2026-07-14T04:41:36.9193299Z + echo zephyr_version=4.1.0
+2026-07-14T04:41:36.9194066Z + echo extra_west_args=
+2026-07-14T04:41:36.9195153Z + echo 'extra_cmake_args=-DSHIELD="dactyl_right" -DZMK_EXTRA_MODULES='\''/__w/dactyl-zmk-config/dactyl-zmk-config'\'''
+2026-07-14T04:41:36.9196024Z + echo 'display_name=dactyl_right - nice_nano_v2'
+2026-07-14T04:41:36.9196692Z + echo artifact_name=dactyl_right-nice_nano_v2-zmk
+2026-07-14T04:41:36.9274691Z ##[group]Run if [ "/tmp/zmk-config" != "${GITHUB_WORKSPACE}" ]; then
+2026-07-14T04:41:36.9275224Z [36;1mif [ "/tmp/zmk-config" != "${GITHUB_WORKSPACE}" ]; then[0m
+2026-07-14T04:41:36.9275619Z [36;1m  mkdir "/tmp/zmk-config/config"[0m
+2026-07-14T04:41:36.9275976Z [36;1m  cp -R config/* "/tmp/zmk-config/config/"[0m
+2026-07-14T04:41:36.9276302Z [36;1mfi[0m
+2026-07-14T04:41:36.9276612Z shell: sh -e {0}
+2026-07-14T04:41:36.9276843Z env:
+2026-07-14T04:41:36.9277076Z   build_dir: /tmp/tmp.BqujMV9ThT
+2026-07-14T04:41:36.9277370Z   base_dir: /tmp/zmk-config
+2026-07-14T04:41:36.9277644Z   zephyr_version: 4.1.0
+2026-07-14T04:41:36.9277899Z   extra_west_args: 
+2026-07-14T04:41:36.9278373Z   extra_cmake_args: -DSHIELD="dactyl_right" -DZMK_EXTRA_MODULES='/__w/dactyl-zmk-config/dactyl-zmk-config'
+2026-07-14T04:41:36.9278935Z   display_name: dactyl_right - nice_nano_v2
+2026-07-14T04:41:36.9279302Z   artifact_name: dactyl_right-nice_nano_v2-zmk
+2026-07-14T04:41:36.9279928Z ##[endgroup]
+2026-07-14T04:41:37.0582532Z ##[group]Run actions/cache@v5
+2026-07-14T04:41:37.0582893Z with:
+2026-07-14T04:41:37.0583456Z   path: /tmp/zmk-config/modules/
+/tmp/zmk-config/tools/
+/tmp/zmk-config/zephyr/
+/tmp/zmk-config/bootloader/
+/tmp/zmk-config/zmk/
+
+2026-07-14T04:41:37.0584366Z   key: Linux-build-cache-zephyr-4.1.0-modules-51ff703fd177680e6760f6be6f7be158df18be1fffdee4c10a220f83e1a169b9
+2026-07-14T04:41:37.0585109Z   restore-keys: Linux-build-cache-zephyr-4.1.0-modules-
+Linux-build-
+Linux-
+
+2026-07-14T04:41:37.0585570Z   enableCrossOsArchive: false
+2026-07-14T04:41:37.0585864Z   fail-on-cache-miss: false
+2026-07-14T04:41:37.0586139Z   lookup-only: false
+2026-07-14T04:41:37.0586388Z   save-always: false
+2026-07-14T04:41:37.0586629Z env:
+2026-07-14T04:41:37.0586864Z   build_dir: /tmp/tmp.BqujMV9ThT
+2026-07-14T04:41:37.0587158Z   base_dir: /tmp/zmk-config
+2026-07-14T04:41:37.0587441Z   zephyr_version: 4.1.0
+2026-07-14T04:41:37.0587699Z   extra_west_args: 
+2026-07-14T04:41:37.0588239Z   extra_cmake_args: -DSHIELD="dactyl_right" -DZMK_EXTRA_MODULES='/__w/dactyl-zmk-config/dactyl-zmk-config'
+2026-07-14T04:41:37.0588831Z   display_name: dactyl_right - nice_nano_v2
+2026-07-14T04:41:37.0589190Z   artifact_name: dactyl_right-nice_nano_v2-zmk
+2026-07-14T04:41:37.0589858Z   cache_name: cache-zephyr-4.1.0-modules
+2026-07-14T04:41:37.0590199Z ##[endgroup]
+2026-07-14T04:41:37.0595314Z ##[command]/usr/bin/docker exec  7621f9c71cb825341cad99ac6ea57d86e9c239d0c81198a6015c971f8e650790 sh -c "cat /etc/*release | grep ^ID"
+2026-07-14T04:41:37.3499207Z Cache not found for input keys: Linux-build-cache-zephyr-4.1.0-modules-51ff703fd177680e6760f6be6f7be158df18be1fffdee4c10a220f83e1a169b9, Linux-build-cache-zephyr-4.1.0-modules-, Linux-build-, Linux-
+2026-07-14T04:41:37.3625317Z ##[group]Run west init -l "/tmp/zmk-config/config"
+2026-07-14T04:41:37.3625732Z [36;1mwest init -l "/tmp/zmk-config/config"[0m
+2026-07-14T04:41:37.3626109Z shell: sh -e {0}
+2026-07-14T04:41:37.3626305Z env:
+2026-07-14T04:41:37.3626506Z   build_dir: /tmp/tmp.BqujMV9ThT
+2026-07-14T04:41:37.3626941Z   base_dir: /tmp/zmk-config
+2026-07-14T04:41:37.3627172Z   zephyr_version: 4.1.0
+2026-07-14T04:41:37.3627384Z   extra_west_args: 
+2026-07-14T04:41:37.3627826Z   extra_cmake_args: -DSHIELD="dactyl_right" -DZMK_EXTRA_MODULES='/__w/dactyl-zmk-config/dactyl-zmk-config'
+2026-07-14T04:41:37.3628348Z   display_name: dactyl_right - nice_nano_v2
+2026-07-14T04:41:37.3628662Z   artifact_name: dactyl_right-nice_nano_v2-zmk
+2026-07-14T04:41:37.3628949Z ##[endgroup]
+2026-07-14T04:41:37.5377574Z FATAL ERROR: can't init: no west.yml found in /tmp/zmk-config/config
+2026-07-14T04:41:37.5631704Z ##[error]Process completed with exit code 1.
+2026-07-14T04:41:37.5726024Z ##[group]Run if ! (grep "CONFIG_ZMK_BOARD_COMPAT=y" "/tmp/tmp.BqujMV9ThT/zephyr/.config" > /dev/null)
+2026-07-14T04:41:37.5726763Z [36;1mif ! (grep "CONFIG_ZMK_BOARD_COMPAT=y" "/tmp/tmp.BqujMV9ThT/zephyr/.config" > /dev/null)[0m
+2026-07-14T04:41:37.5727202Z [36;1mthen[0m
+2026-07-14T04:41:37.5727497Z [36;1m  original_board=$(echo "nice_nano_v2" | sed -e 's$/.*$$')[0m
+2026-07-14T04:41:37.5728232Z [36;1m  west_board=$(west boards --board-root /tmp/zmk-config/zmk/app/module --board-root /tmp/zmk-config/zmk/app --board "${original_board}")[0m
+2026-07-14T04:41:37.5728854Z [36;1m  if [ -z "$west_board" ]; then[0m
+2026-07-14T04:41:37.5729272Z [36;1m    echo "Not found the board listed with west boards. Skipping further checking."[0m
+2026-07-14T04:41:37.5729983Z [36;1m    exit 0[0m
+2026-07-14T04:41:37.5730187Z [36;1m  fi[0m
+2026-07-14T04:41:37.5730368Z [36;1m[0m
+2026-07-14T04:41:37.5731036Z [36;1m  west boards --board-root /tmp/zmk-config/zmk/app/module --board-root /tmp/zmk-config/zmk/app --board "${original_board}" --format "{qualifiers}" | grep "zmk" > /dev/null[0m
+2026-07-14T04:41:37.5731750Z [36;1m  if [ $? -ne 0 ][0m
+2026-07-14T04:41:37.5731971Z [36;1m  then[0m
+2026-07-14T04:41:37.5732729Z [36;1m    echo "::warning file=build/zephyr/.config,title=Missing ZMK Compat::The selected board does not report explicit ZMK compat. Please verify you've selected the correct board and ZMK variant if one exists"[0m
+2026-07-14T04:41:37.5733544Z [36;1m  else[0m
+2026-07-14T04:41:37.5734333Z [36;1m    echo "::error file=build/zephyr/.config,title=Missing ZMK Compat::The selected board is not set up for ZMK and there is a ZMK variant available. See https://zmk.dev/blog/2025/12/09/zephyr-4-1#zmk-board-variant."[0m
+2026-07-14T04:41:37.5735166Z [36;1m    exit 1[0m
+2026-07-14T04:41:37.5735362Z [36;1m  fi[0m
+2026-07-14T04:41:37.5735542Z [36;1mfi[0m
+2026-07-14T04:41:37.5735826Z shell: sh -e {0}
+2026-07-14T04:41:37.5736019Z env:
+2026-07-14T04:41:37.5736220Z   build_dir: /tmp/tmp.BqujMV9ThT
+2026-07-14T04:41:37.5736474Z   base_dir: /tmp/zmk-config
+2026-07-14T04:41:37.5736707Z   zephyr_version: 4.1.0
+2026-07-14T04:41:37.5736919Z   extra_west_args: 
+2026-07-14T04:41:37.5737348Z   extra_cmake_args: -DSHIELD="dactyl_right" -DZMK_EXTRA_MODULES='/__w/dactyl-zmk-config/dactyl-zmk-config'
+2026-07-14T04:41:37.5737855Z   display_name: dactyl_right - nice_nano_v2
+2026-07-14T04:41:37.5738168Z   artifact_name: dactyl_right-nice_nano_v2-zmk
+2026-07-14T04:41:37.5738448Z ##[endgroup]
+2026-07-14T04:41:37.6264158Z grep: /tmp/tmp.BqujMV9ThT/zephyr/.config: No such file or directory
+2026-07-14T04:41:37.7478913Z usage: west [-h] [-z ZEPHYR_BASE] [-v] [-q] [-V] <command> ...
+2026-07-14T04:41:37.7479901Z west: unknown command "boards"; do you need to run this inside a workspace?
+2026-07-14T04:41:37.7778624Z ##[error]Process completed with exit code 1.
+2026-07-14T04:41:37.7816067Z ##[group]Run if [ -f "/tmp/tmp.BqujMV9ThT/zephyr/.config" ]
+2026-07-14T04:41:37.7816547Z [36;1mif [ -f "/tmp/tmp.BqujMV9ThT/zephyr/.config" ][0m
+2026-07-14T04:41:37.7816865Z [36;1mthen[0m
+2026-07-14T04:41:37.7817166Z [36;1m  grep -v -e "^#" -e "^$" "/tmp/tmp.BqujMV9ThT/zephyr/.config" | sort[0m
+2026-07-14T04:41:37.7817534Z [36;1melse[0m
+2026-07-14T04:41:37.7817746Z [36;1m  echo "No Kconfig output"[0m
+2026-07-14T04:41:37.7817999Z [36;1mfi[0m
+2026-07-14T04:41:37.7818485Z shell: sh -e {0}
+2026-07-14T04:41:37.7818676Z env:
+2026-07-14T04:41:37.7818870Z   build_dir: /tmp/tmp.BqujMV9ThT
+2026-07-14T04:41:37.7819124Z   base_dir: /tmp/zmk-config
+2026-07-14T04:41:37.7819357Z   zephyr_version: 4.1.0
+2026-07-14T04:41:37.7820002Z   extra_west_args: 
+2026-07-14T04:41:37.7820519Z   extra_cmake_args: -DSHIELD="dactyl_right" -DZMK_EXTRA_MODULES='/__w/dactyl-zmk-config/dactyl-zmk-config'
+2026-07-14T04:41:37.7821035Z   display_name: dactyl_right - nice_nano_v2
+2026-07-14T04:41:37.7821392Z   artifact_name: dactyl_right-nice_nano_v2-zmk
+2026-07-14T04:41:37.7821680Z ##[endgroup]
+2026-07-14T04:41:37.8340821Z No Kconfig output
+2026-07-14T04:41:37.8401514Z ##[group]Run if [ -f "/tmp/tmp.BqujMV9ThT/zephyr/zephyr.dts" ]
+2026-07-14T04:41:37.8401999Z [36;1mif [ -f "/tmp/tmp.BqujMV9ThT/zephyr/zephyr.dts" ][0m
+2026-07-14T04:41:37.8402318Z [36;1mthen[0m
+2026-07-14T04:41:37.8402562Z [36;1m  cat "/tmp/tmp.BqujMV9ThT/zephyr/zephyr.dts"[0m
+2026-07-14T04:41:37.8402951Z [36;1melif [ -f "/tmp/tmp.BqujMV9ThT/zephyr/zephyr.dts.pre" ][0m
+2026-07-14T04:41:37.8403307Z [36;1mthen[0m
+2026-07-14T04:41:37.8403566Z [36;1m  cat -s "/tmp/tmp.BqujMV9ThT/zephyr/zephyr.dts.pre"[0m
+2026-07-14T04:41:37.8403876Z [36;1melse[0m
+2026-07-14T04:41:37.8404073Z [36;1m  echo "No Devicetree output"[0m
+2026-07-14T04:41:37.8404331Z [36;1mfi[0m
+2026-07-14T04:41:37.8404597Z shell: sh -e {0}
+2026-07-14T04:41:37.8404968Z env:
+2026-07-14T04:41:37.8405165Z   build_dir: /tmp/tmp.BqujMV9ThT
+2026-07-14T04:41:37.8405414Z   base_dir: /tmp/zmk-config
+2026-07-14T04:41:37.8405641Z   zephyr_version: 4.1.0
+2026-07-14T04:41:37.8405853Z   extra_west_args: 
+2026-07-14T04:41:37.8406312Z   extra_cmake_args: -DSHIELD="dactyl_right" -DZMK_EXTRA_MODULES='/__w/dactyl-zmk-config/dactyl-zmk-config'
+2026-07-14T04:41:37.8406822Z   display_name: dactyl_right - nice_nano_v2
+2026-07-14T04:41:37.8407128Z   artifact_name: dactyl_right-nice_nano_v2-zmk
+2026-07-14T04:41:37.8407411Z ##[endgroup]
+2026-07-14T04:41:37.8938499Z No Devicetree output
+2026-07-14T04:41:37.9093437Z Post job cleanup.
+2026-07-14T04:41:37.9101306Z ##[command]/usr/bin/docker exec  7621f9c71cb825341cad99ac6ea57d86e9c239d0c81198a6015c971f8e650790 sh -c "cat /etc/*release | grep ^ID"
+2026-07-14T04:41:38.0844097Z [command]/usr/bin/git version
+2026-07-14T04:41:38.0917578Z git version 2.43.0
+2026-07-14T04:41:38.0961815Z Temporarily overriding HOME='/__w/_temp/04534d63-f414-4141-a26b-5fb6edef9c6c' before making global git config changes
+2026-07-14T04:41:38.0963132Z Adding repository directory to the temporary git global config as a safe directory
+2026-07-14T04:41:38.0968278Z [command]/usr/bin/git config --global --add safe.directory /__w/dactyl-zmk-config/dactyl-zmk-config
+2026-07-14T04:41:38.1000847Z Removing SSH command configuration
+2026-07-14T04:41:38.1006665Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-07-14T04:41:38.1044071Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-07-14T04:41:38.1304984Z Removing HTTP extra header
+2026-07-14T04:41:38.1306831Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-07-14T04:41:38.1339149Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-07-14T04:41:38.1581011Z Removing includeIf entries pointing to credentials config files
+2026-07-14T04:41:38.1591306Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-07-14T04:41:38.1616639Z includeif.gitdir:/__w/dactyl-zmk-config/dactyl-zmk-config/.git.path
+2026-07-14T04:41:38.1617611Z includeif.gitdir:/__w/dactyl-zmk-config/dactyl-zmk-config/.git/worktrees/*.path
+2026-07-14T04:41:38.1618119Z includeif.gitdir:/github/workspace/.git.path
+2026-07-14T04:41:38.1618978Z includeif.gitdir:/github/workspace/.git/worktrees/*.path
+2026-07-14T04:41:38.1628637Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/__w/dactyl-zmk-config/dactyl-zmk-config/.git.path
+2026-07-14T04:41:38.1651244Z /__w/_temp/git-credentials-77842a24-5e5b-414e-b926-10798e6b9017.config
+2026-07-14T04:41:38.1662947Z [command]/usr/bin/git config --local --unset includeif.gitdir:/__w/dactyl-zmk-config/dactyl-zmk-config/.git.path /__w/_temp/git-credentials-77842a24-5e5b-414e-b926-10798e6b9017.config
+2026-07-14T04:41:38.1707006Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/__w/dactyl-zmk-config/dactyl-zmk-config/.git/worktrees/*.path
+2026-07-14T04:41:38.1725039Z /__w/_temp/git-credentials-77842a24-5e5b-414e-b926-10798e6b9017.config
+2026-07-14T04:41:38.1751192Z [command]/usr/bin/git config --local --unset includeif.gitdir:/__w/dactyl-zmk-config/dactyl-zmk-config/.git/worktrees/*.path /__w/_temp/git-credentials-77842a24-5e5b-414e-b926-10798e6b9017.config
+2026-07-14T04:41:38.1788699Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/github/workspace/.git.path
+2026-07-14T04:41:38.1796021Z /github/runner_temp/git-credentials-77842a24-5e5b-414e-b926-10798e6b9017.config
+2026-07-14T04:41:38.1805816Z [command]/usr/bin/git config --local --unset includeif.gitdir:/github/workspace/.git.path /github/runner_temp/git-credentials-77842a24-5e5b-414e-b926-10798e6b9017.config
+2026-07-14T04:41:38.1837326Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/github/workspace/.git/worktrees/*.path
+2026-07-14T04:41:38.1859349Z /github/runner_temp/git-credentials-77842a24-5e5b-414e-b926-10798e6b9017.config
+2026-07-14T04:41:38.1867704Z [command]/usr/bin/git config --local --unset includeif.gitdir:/github/workspace/.git/worktrees/*.path /github/runner_temp/git-credentials-77842a24-5e5b-414e-b926-10798e6b9017.config
+2026-07-14T04:41:38.1900554Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-07-14T04:41:38.2142453Z Removing credentials config '/__w/_temp/git-credentials-77842a24-5e5b-414e-b926-10798e6b9017.config'
+2026-07-14T04:41:38.2301513Z Stop and remove container: 432d792c8a0f4cdab96ecd626a082d0e_zmkfirmwarezmkbuildarmstable_45b775
+2026-07-14T04:41:38.2305979Z ##[command]/usr/bin/docker rm --force 7621f9c71cb825341cad99ac6ea57d86e9c239d0c81198a6015c971f8e650790
+2026-07-14T04:41:38.3171476Z 7621f9c71cb825341cad99ac6ea57d86e9c239d0c81198a6015c971f8e650790
+2026-07-14T04:41:38.3198682Z Remove container network: github_network_e47feadc1cd3478980c7d0f5cba5a1fe
+2026-07-14T04:41:38.3204174Z ##[command]/usr/bin/docker network rm github_network_e47feadc1cd3478980c7d0f5cba5a1fe
+2026-07-14T04:41:38.4176067Z github_network_e47feadc1cd3478980c7d0f5cba5a1fe
+2026-07-14T04:41:38.4246185Z Cleaning up orphan processes
