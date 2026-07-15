@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dactyl ZMK Configurator</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-container">
+        <header>
+            <h1>Dactyl ZMK Configurator</h1>
+            <div class="header-actions">
+                <button id="save-btn" class="btn primary">Save Keymap</button>
+                <button id="push-btn" class="btn success">Push to GitHub</button>
+            </div>
+        </header>
+
+        <main>
+            <div class="keyboard-container">
+                <div class="keyboard-half left-half" id="left-keyboard"></div>
+                <div class="keyboard-half right-half" id="right-keyboard"></div>
+            </div>
+
+            <div class="palette-container">
+                <h2>Key Palette (Drag to assign)</h2>
+                <div class="key-palette" id="key-palette">
+                    <!-- Common keys will be injected here -->
+                </div>
+            </div>
+            
+            <div class="raw-code">
+                <h2>Raw Keymap View</h2>
+                <textarea id="raw-keymap" readonly></textarea>
+            </div>
+        </main>
+    </div>
+
+    <div id="toast" class="toast"></div>
+
+    <script src="main.js"></script>
+</body>
+</html>
