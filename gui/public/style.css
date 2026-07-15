@@ -88,6 +88,36 @@ h1 {
     box-shadow: 0 10px 15px -3px rgba(16, 185, 129, 0.4);
 }
 
+.layer-tabs {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    justify-content: center;
+}
+
+.layer-tab {
+    padding: 0.5rem 2rem;
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    color: var(--text-muted);
+    border-radius: 0.5rem;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 600;
+    transition: all 0.2s ease;
+}
+
+.layer-tab:hover {
+    background: rgba(30, 41, 59, 0.9);
+}
+
+.layer-tab.active {
+    background: var(--accent-blue);
+    color: white;
+    border-color: var(--accent-blue);
+    box-shadow: 0 4px 10px rgba(59, 130, 246, 0.3);
+}
+
 .keyboard-container {
     display: flex;
     justify-content: center;
@@ -129,12 +159,16 @@ h1 {
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 0.85rem;
+    font-size: 0.7rem;
     font-weight: 500;
     cursor: pointer;
     user-select: none;
     transition: all 0.2s ease;
     box-shadow: inset 0 2px 0 rgba(255, 255, 255, 0.05), 0 4px 6px rgba(0,0,0,0.3);
+    text-align: center;
+    word-wrap: break-word;
+    padding: 0.2rem;
+    line-height: 1.2;
 }
 
 .key:not(.empty):hover {
@@ -199,6 +233,76 @@ h1 {
 
 .key-palette .key:active {
     cursor: grabbing;
+}
+
+.saved-profiles {
+    background: var(--bg-card);
+    padding: 2rem;
+    border-radius: 1rem;
+    border: 1px solid var(--border-color);
+    margin-bottom: 2rem;
+}
+
+.saved-profiles h2 {
+    margin-bottom: 1rem;
+    font-size: 1.25rem;
+    color: var(--text-muted);
+}
+
+.profile-actions {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.profile-actions input {
+    flex-grow: 1;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    border: 1px solid var(--key-border);
+    background: #000;
+    color: var(--text-main);
+    font-family: inherit;
+    font-size: 1rem;
+}
+
+.profile-actions input:focus {
+    outline: none;
+    border-color: var(--accent-blue);
+}
+
+.profile-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.profile-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--key-bg);
+    padding: 0.75rem 1rem;
+    border-radius: 0.5rem;
+    border: 1px solid var(--key-border);
+}
+
+.profile-item button {
+    background: transparent;
+    border: none;
+    color: var(--accent-blue);
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.profile-item button:hover {
+    text-decoration: underline;
+}
+
+.profile-item button.delete-btn {
+    color: #ef4444;
 }
 
 .raw-code {

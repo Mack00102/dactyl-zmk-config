@@ -17,6 +17,11 @@
             </div>
         </header>
 
+        <div class="layer-tabs" id="layer-tabs">
+            <button class="layer-tab active" data-layer="default_layer">Default Layer</button>
+            <button class="layer-tab" data-layer="settings_layer">Settings Layer</button>
+        </div>
+
         <main>
             <div class="keyboard-container">
                 <div class="keyboard-half left-half" id="left-keyboard"></div>
@@ -30,7 +35,16 @@
                 </div>
             </div>
             
-            <div class="raw-code">
+            <div class="saved-profiles">
+            <h2>Saved Profiles (Browser Storage)</h2>
+            <div class="profile-actions">
+                <input type="text" id="profile-name" placeholder="Name this keymap layout...">
+                <button id="save-profile-btn" class="btn primary">Save to GUI</button>
+            </div>
+            <ul id="profile-list" class="profile-list"></ul>
+        </div>
+
+        <div class="raw-code">
                 <h2>Raw Keymap View</h2>
                 <textarea id="raw-keymap" readonly></textarea>
             </div>
