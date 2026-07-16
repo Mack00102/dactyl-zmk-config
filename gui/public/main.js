@@ -104,7 +104,7 @@ document.addEventListener('DOMContentLoaded', () => {
             
             if (match) {
                 const bindingsText = match[1];
-                const bindingRegex = /&[a-zA-Z0-9_]+(?:\s+[a-zA-Z0-9_]+)?/g;
+                const bindingRegex = /&[a-zA-Z0-9_]+(?:\s+[a-zA-Z0-9_]+){0,2}/g;
                 layersData[layerName] = [...bindingsText.matchAll(bindingRegex)].map(m => m[0].trim().replace(/\s+/g, ' '));
             }
         });
