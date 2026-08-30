@@ -4,6 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const keyPaletteEl = document.getElementById('key-palette');
     const rawKeymapEl = document.getElementById('raw-keymap');
     const saveBtn = document.getElementById('save-btn');
+    const studioUnlockBtn = document.getElementById('studio-unlock-btn');
     const pushBtn = document.getElementById('push-btn');
     const layerTabs = document.querySelectorAll('.layer-tab');
     
@@ -28,6 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
         '&kp KP_N1', '&kp KP_N2', '&kp KP_N3', '&kp KP_N4', '&kp KP_N5', '&kp KP_N6', '&kp KP_N7', '&kp KP_N8', '&kp KP_N9', '&kp KP_N0',
         '&kp KP_NUM', '&kp KP_DIVIDE', '&kp KP_MULTIPLY', '&kp KP_MINUS', '&kp KP_PLUS', '&kp KP_ENTER', '&kp KP_DOT',
         '&mo 1', '&mo 2', '&mo 3',
+        '&studio_unlock',
         '&kp C_VOL_UP', '&kp C_VOL_DN', '&kp C_MUTE', '&kp C_PLAY_PAUSE', '&kp C_NEXT', '&kp C_PREV', '&kp C_BRI_UP', '&kp C_BRI_DN',
         '&bt BT_CLR', '&bt BT_SEL 0', '&bt BT_SEL 1', '&bt BT_SEL 2', '&bt BT_SEL 3', '&bt BT_SEL 4',
         '&out OUT_USB', '&out OUT_BLE'
@@ -382,6 +384,18 @@ document.addEventListener('DOMContentLoaded', () => {
         } finally {
             saveBtn.textContent = 'Save Keymap';
         }
+    });
+
+    studioUnlockBtn.addEventListener('click', () => {
+        if (!selectedKeyEl) {
+            showToast('Select a keyboard key first, then click Studio Unlock.', true);
+            return;
+        }
+
+        updateKey(selectedKeyEl, '&studio_unlock');
+        selectedKeyEl.classList.remove('selected');
+        selectedKeyEl = null;
+        showToast('Studio unlock assigned. Click Save Keymap to write it to disk.');
     });
 
     pushBtn.addEventListener('click', async () => {

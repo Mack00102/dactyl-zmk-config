@@ -82,6 +82,17 @@ h1 {
     color: white;
 }
 
+.btn.studio {
+    background-color: #8b5cf6;
+    color: white;
+}
+
+.btn.studio:hover {
+    background-color: #7c3aed;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 15px -3px rgba(139, 92, 246, 0.4);
+}
+
 .btn.success:hover {
     background-color: #059669;
     transform: translateY(-2px);
